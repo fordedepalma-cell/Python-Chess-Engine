@@ -1,3 +1,6 @@
+# Python Chess Engine v1.0.0
+# Copyright Forde DePalma, 2026
+
 class Piece:
     def __init__(self, piece, color, column, rank):
         self.piece = piece
