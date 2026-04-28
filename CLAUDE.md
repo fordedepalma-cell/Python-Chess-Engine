@@ -11,3 +11,9 @@
 - 4 space indents
 - Descriptive variable names
 - Add the most relevant documentation in a section titled "# Relevant Documentation"
+
+# My Cheat Sheet (For my own personal use)
+-- /debug-push <bug description> (Runs following three skills)
+-- /debug-chess <bug description> (Debugs scripts [.py])
+-- /format-code (Uses the Python package "Black" to make code more readable)
+-- /push-to-git (Commits files and pushes them to my GitHub repository)
