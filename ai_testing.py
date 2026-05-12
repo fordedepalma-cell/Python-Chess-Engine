@@ -3,7 +3,7 @@
 from openrouter import OpenRouter
 import requests
 import json
-from python_dotenv import load_dotenv
+from dotenv import load_dotenv
 import os
 
 load_dotenv()
