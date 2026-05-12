@@ -5,3 +5,6 @@
 
 # Claude Code worktrees (never track these)
 .claude/worktrees/
+
+# Claude Code hook output logs
+*-log.json
