@@ -2,3 +2,6 @@
 .env
 .env.*
 !.env.example
+
+# Claude Code worktrees (never track these)
+.claude/worktrees/
