@@ -9,34 +9,32 @@ import os
 load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+client = OpenAI(
+    base_url="https://api.groq.com/openai/v1",
+    api_key=GROQ_API_KEY
+)
+model = "gpt-5.2"
+messages = []
 
-# with OpenAI(base_url="https://api.groq.com/openai/v1", api_key=GROQ_API_KEY) as client:
-#     response = client.chat.completions.create(
-#         model="gpt-5.2",
-#         messages=[
-#             {"role": "user", "content": "Hello there!"}
-#         ],
-#     )
-#     print(response.choices[0].message.content)
-#
-# response = requests.post(
-#     url="https://api.groq.com/openai/v1/chat/completions",
-#     headers={
-#         "Authorization": f"Bearer {GROQ_API_KEY}",
-#     },
-#     data=json.dumps({
-#         "model": "gpt-5.2",
-#         "messages": [
-#             {
-#                 "role": "user",
-#                 "content": "Hello there!"
-#             }
-#         ]
-#     })
-# )
-#
-# print(response.json())
+def add_user_message(text):
+    user_message = {"role": "user", "content": text}
+    messages.append(user_message)
 
+def add_assistant_message(text):
+    assistant_message = {"role": "assistant", "content": text}
+    messages.append(assistant_message)
+
+params = {
+    "model": model,
+    "messages": messages
+}
+
+chat_completion = client.chat.completions.create(**params)
+
+print(chat_completion.choices[0].message.content)
+
+# Commented out code
+"""
 # Math tutor
 messages = [
     {
@@ -93,3 +91,4 @@ while session_running:
     print(response)
 
 print("Your session is now expired")
+"""
