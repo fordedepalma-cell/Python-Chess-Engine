@@ -1,19 +1,43 @@
 # This script is intended for testing AI-related functionality of the chess engine.
 
-"""
-from openrouter import OpenRouter
+from openai import OpenAI
 import requests
 import json
-"""
-
-from groq import Groq
 from dotenv import load_dotenv
 import os
-import openai
 
 load_dotenv()
 
-# Variables
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+# with OpenAI(base_url="https://api.groq.com/openai/v1", api_key=GROQ_API_KEY) as client:
+#     response = client.chat.completions.create(
+#         model="gpt-5.2",
+#         messages=[
+#             {"role": "user", "content": "Hello there!"}
+#         ],
+#     )
+#     print(response.choices[0].message.content)
+#
+# response = requests.post(
+#     url="https://api.groq.com/openai/v1/chat/completions",
+#     headers={
+#         "Authorization": f"Bearer {GROQ_API_KEY}",
+#     },
+#     data=json.dumps({
+#         "model": "gpt-5.2",
+#         "messages": [
+#             {
+#                 "role": "user",
+#                 "content": "Hello there!"
+#             }
+#         ]
+#     })
+# )
+#
+# print(response.json())
+
+# Math tutor
 messages = [
     {
         "role": "system",
@@ -21,16 +45,14 @@ messages = [
     }
 ]
 
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 # client = Groq(api_key=GROQ_API_KEY)
 # model = "<any model here>"
-client = openai.OpenAI(
+client = OpenAI(
     base_url="https://api.groq.com/openai/v1",
     api_key=GROQ_API_KEY
 )
 model = "gpt-5.2"
 
-# Helper functions
 def add_user_message(text):
     user_message = {"role": "user", "content": text}
     messages.append(user_message)
